@@ -1,0 +1,49 @@
+%% ----- Matlab - Exemplo de código para solução de equaçoes algebricas S = solve(eqn,var)
+syms eBx eBy eBz Bx By Bz x0 y0 z0 a b c rho phi lambda v p
+%eBx=a*Bx+x0;
+%B'x=b*(Bx*sin(p)By*cos(p)+y0
+%B'x=c*(Bz*cos(lambda)*cos(rho)+Bx*sin(phi)*cos(lambda) + By*sin(lambda)) + z0
+
+Bx = solve(eBx == a*Bx + x0, Bx)
+By = solve(eBy == b*( Bx*sin(rho) + By*cos(rho) ) + y0, By)
+Bz = solve(eBz == c*( Bz*cos(lambda)*cos(rho) + Bx*sin(phi)*cos(lambda) + By*sin(lambda) ) + z0, Bz)
+
+% ----- isolando-se as queções de Bx, By e BZ
+
+eBz = 17
+eBx = 16
+eBy = 15
+
+Bx = 6
+By =14
+Bz =13
+
+x0 =12
+y0 =11
+z0 =10
+
+a =9
+b = 8
+c =3
+
+rho =5
+phi = 7
+lambda = 4
+
+
+
+Bz = -(z0 - eBz + c*((cos(lambda)*sin(phi)*(eBx - x0))/a - (sin(lambda)*(y0 - eBy + (b*sin(rho)*(eBx - x0))/a))/(b*cos(rho))))/(c*cos(lambda)*cos(rho))
+
+
+
+
+Bz2 = b*c*( sin(rho)*sin(lambda) - cos(rho)*sin(phi)*cos(lambda) )*(eBx-x0) - a*c*sin(lambda)*(eBy-y0) + a*b*cos(rho)*(eBz-z0);
+denBz2=a*b*c*cos(rho)*cos(phi)*cos(lambda);
+
+BzTCC=Bz2/denBz2
+
+
+
+
+
+
